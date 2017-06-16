@@ -12,12 +12,12 @@ class Shutter3Sps < Shutter3
 
     raise 'Shutter3Sps: Please provide an SPS address' unless sps_address
     super(bdid)
-    @sps = SPSPub.new host: sps_address
+    @pub= SPSPub.new host: sps_address
     @topic = topic
   end
 
   def on_android_keypress()
-    @sps.notice @topic + ': button2 pressed'
+    notify 'button2 pressed'
   end
 
   def on_android_keydown()
@@ -29,16 +29,15 @@ class Shutter3Sps < Shutter3
   end
 
   def on_connect()
-    @sps.notice @topic + ': connected'
+    notify 'connected'
   end
 
   def on_disconnect()
-
-    @sps.notice @topic + ': disconnected'
+    notify 'disconnected'
   end
 
   def on_ios_keypress()
-    @sps.notice @topic + ': button1 pressed'
+    notify 'button1 pressed'
   end
 
   def on_ios_keydown()
@@ -48,6 +47,12 @@ class Shutter3Sps < Shutter3
   def on_ios_keyup()
 
   end
+  
+  protected
+  
+  def notify(m)
+    @pub.notice @topic + ': ' + m
+  end    
 
 end
 
