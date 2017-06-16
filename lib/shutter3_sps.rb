@@ -10,7 +10,7 @@ class Shutter3Sps < Shutter3
 
   def initialize(bdid, topic: 'shutter3', sps_address: nil, sps_port: 59000)
 
-    raise 'Shutter3Sps: Please provide a SPS addres' unless sps_address
+    raise 'Shutter3Sps: Please provide an SPS address' unless sps_address
     super(bdid)
     @sps = SPSPub.new host: sps_address
     @topic = topic
@@ -34,7 +34,7 @@ class Shutter3Sps < Shutter3
 
   def on_disconnect()
 
-    @sps.notice @topic + ': dicconnected'
+    @sps.notice @topic + ': disconnected'
   end
 
   def on_ios_keypress()

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'shutter3_sps'
-  s.version = '0.1.0'
+  s.version = '0.1.1'
   s.summary = 'Publishes Shutter3 (see the Shutter3 gem) button event ' + 
       'notifications through the SimplePubSub (SPS) messaging broker.'
   s.authors = ['James Robertson']
